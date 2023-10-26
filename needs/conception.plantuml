@@ -1,0 +1,69 @@
+@startuml
+
+class Categorie {
+  - nom: String
+}
+
+class Marque {
+  - nom: String
+}
+
+class Ingredient {
+  - nom: String
+  - pourcentage: float
+}
+
+class Additif {
+  - nom: String
+  - code: String
+}
+
+class ValeurNutritionnelle {
+  - energie_100g: int
+  - graisse_100g: float
+  - sucres_100g: float
+  - fibres_100g: float
+  - proteines_100g: float
+  - sel_100g: float
+}
+
+class Vitamines {
+  - vitA100g: float
+  - vitD100g: float
+  - vitE100g: float
+  - vitK100g: float
+  - vitC100g: float
+  - vitB1100g: float
+  - vitB2100g: float
+  - vitPP100g: float
+  - vitB6100g: float
+  - vitB9100g: float
+  - vitB12100g: float
+}
+
+class Allergenes {
+  - liste: String
+}
+
+class Produit {
+  - categorie: Categorie
+  - marque: Marque
+  - nom: String
+  - nutrition_grade: String
+  - ingredients: List<Ingredient>
+  - valeur_nutritionnelle: ValeurNutritionnelle
+  - vitamines: Vitamines
+  - presence_huile_palme: int
+  - allergenes: Allergenes
+  - additifs: List<Additif>
+}
+
+Categorie "1"--u"1..*" Produit
+Marque "1..*"--r"1..*" Produit
+Ingredient "1..*"--l"1..*" Produit
+Additif "1..*"--l"1..*" Produit
+ValeurNutritionnelle "1"--"1" Produit
+Vitamines "1"--"1" Produit 
+Allergenes "1..*"--r"1..*" Produit
+
+@enduml
